@@ -1,10 +1,11 @@
 import React from 'react';
-import {render} from 'react-dom';
+import ReactDOM from 'react-dom';
+import NavBar from 'components/NavBar';
 
-class App extends React.Component {
-    render () {
-        return <p> Hello React!</p>;
-    }
-}
+const App = React.createClass({
+  render () {
+    return <NavBar/>
+  }
+});
 
-render(<App/>, document.getElementById('page-top'));
+ReactDOM.render(<App/>, document.getElementById("container"));
