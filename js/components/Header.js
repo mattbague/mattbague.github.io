@@ -6,7 +6,7 @@ const Header = React.createClass({
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            <img className="img-responsive" src="img/profile.png" alt=""/>
+            <img className="img-responsive" src="img/profile.jpg" alt=""/>
             <div className="intro-text">
               <span className="name">Matt Bague</span>
               <span className="skills">Full-Stack Software Engineer</span>
