@@ -5,6 +5,7 @@ import Header from 'components/Header';
 import Portfolio from 'components/Portfolio';
 import About from 'components/About';
 import Contact from 'components/Contact';
+import Footer from 'components/Footer';
 
 const App = React.createClass({
   render () {
@@ -14,6 +15,7 @@ const App = React.createClass({
       <Portfolio/>
       <About/>
       <Contact/>
+      <Footer/>
     </div>;
   }
 });
