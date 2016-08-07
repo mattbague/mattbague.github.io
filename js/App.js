@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import NavBar from 'components/NavBar';
 import Header from 'components/Header';
 import Portfolio from 'components/Portfolio';
+import AboutMe from 'components/AboutMe';
 
 const App = React.createClass({
   render () {
@@ -10,6 +11,7 @@ const App = React.createClass({
       <NavBar/>
       <Header/>
       <Portfolio/>
+      <AboutMe/>
     </div>;
   }
 });
