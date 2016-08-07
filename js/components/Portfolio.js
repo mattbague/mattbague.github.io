@@ -60,7 +60,7 @@ const Portfolio = React.createClass({
               body="I worked here"
               startDate="June 2014"
               endDate="April 2016"
-              image="img/portfolio/cj.jpg"/>
+              image="img/portfolio/cj.png"/>
           </div>
           <div className="col-sm-4 portfolio-item">
             <PortfolioItem
