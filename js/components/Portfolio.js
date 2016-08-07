@@ -1,4 +1,39 @@
 import React from 'react';
+import {Modal, Button} from 'react-bootstrap';
+
+const PortfolioItem = React.createClass({
+  getInitialState() {
+    return {
+      showModal: false
+    }
+  },
+  close() {
+    this.setState({
+      showModal: false
+    })
+  },
+  open() {
+    this.setState({showModal: true});
+  },
+  render() {
+    return <a style={{cursor: "pointer"}} onClick={this.open}>
+      <img src={this.props.image} style={{maxWidth: "360px", maxHeight: "260px"}}
+           className="img-responsive img-centered" alt=""/>
+      <Modal show={this.state.showModal} onHide={this.close}>
+        <Modal.Header closeButton>
+          <Modal.Title>{this.props.title}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h4>{this.props.startDate} &mdash; {this.props.endDate}</h4>
+          <p>{this.props.body}</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={this.close}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    </a>;
+  }
+});
 
 const Portfolio = React.createClass({
   render() {
@@ -12,64 +47,29 @@ const Portfolio = React.createClass({
         </div>
         <div className="row">
           <div className="col-sm-4 portfolio-item">
-            <a href="#portfolioModal1" className="portfolio-link" data-toggle="modal">
-              <div className="caption">
-                <div className="caption-content">
-                  <i className="fa fa-search-plus fa-3x"/>
-                </div>
-              </div>
-              <img src="img/portfolio/cabin.png" className="img-responsive" alt=""/>
-            </a>
+            <PortfolioItem
+              title="Storygize"
+              body="I currently work here"
+              startDate="April 2016"
+              endDate="Current"
+              image="img/portfolio/storygize.png"/>
           </div>
           <div className="col-sm-4 portfolio-item">
-            <a href="#portfolioModal2" className="portfolio-link" data-toggle="modal">
-              <div className="caption">
-                <div className="caption-content">
-                  <i className="fa fa-search-plus fa-3x"/>
-                </div>
-              </div>
-              <img src="img/portfolio/cake.png" className="img-responsive" alt=""/>
-            </a>
+            <PortfolioItem
+              title="CJ Affiliate"
+              body="I worked here"
+              startDate="June 2014"
+              endDate="April 2016"
+              image="img/portfolio/cj.jpg"/>
           </div>
           <div className="col-sm-4 portfolio-item">
-            <a href="#portfolioModal3" className="portfolio-link" data-toggle="modal">
-              <div className="caption">
-                <div className="caption-content">
-                  <i className="fa fa-search-plus fa-3x"/>
-                </div>
-              </div>
-              <img src="img/portfolio/circus.png" className="img-responsive" alt=""/>
-            </a>
-          </div>
-          <div className="col-sm-4 portfolio-item">
-            <a href="#portfolioModal4" className="portfolio-link" data-toggle="modal">
-              <div className="caption">
-                <div className="caption-content">
-                  <i className="fa fa-search-plus fa-3x"/>
-                </div>
-              </div>
-              <img src="img/portfolio/game.png" className="img-responsive" alt=""/>
-            </a>
-          </div>
-          <div className="col-sm-4 portfolio-item">
-            <a href="#portfolioModal5" className="portfolio-link" data-toggle="modal">
-              <div className="caption">
-                <div className="caption-content">
-                  <i className="fa fa-search-plus fa-3x"/>
-                </div>
-              </div>
-              <img src="img/portfolio/safe.png" className="img-responsive" alt=""/>
-            </a>
-          </div>
-          <div className="col-sm-4 portfolio-item">
-            <a href="#portfolioModal6" className="portfolio-link" data-toggle="modal">
-              <div className="caption">
-                <div className="caption-content">
-                  <i className="fa fa-search-plus fa-3x"/>
-                </div>
-              </div>
-              <img src="img/portfolio/submarine.png" className="img-responsive" alt=""/>
-            </a>
+            <PortfolioItem
+              title="Cal Poly San Luis Obispo"
+              body="I went to university here"
+              startDate="September 2010"
+              endDate="June 2014"
+              image="img/portfolio/calpoly.png"
+            />
           </div>
         </div>
       </div>
