@@ -21,9 +21,10 @@ const PortfolioItem = React.createClass({
            className="img-responsive img-centered" alt=""/>
       <Modal show={this.state.showModal} onHide={this.close}>
         <Modal.Header closeButton>
-          <Modal.Title>{this.props.title}</Modal.Title>
+          <Modal.Title>{this.props.company}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <h3>{this.props.position}</h3>
           <h4>{this.props.startDate} &mdash; {this.props.endDate}</h4>
           <p>{this.props.body}</p>
         </Modal.Body>
@@ -48,7 +49,8 @@ const Portfolio = React.createClass({
         <div className="row">
           <div className="col-sm-4 portfolio-item">
             <PortfolioItem
-              title="Storygize"
+              company="Storygize"
+              position="Software Engineer"
               body="I currently work here"
               startDate="April 2016"
               endDate="Current"
@@ -56,19 +58,35 @@ const Portfolio = React.createClass({
           </div>
           <div className="col-sm-4 portfolio-item">
             <PortfolioItem
-              title="CJ Affiliate"
-              body="I worked here"
+              company="CJ Affiliate"
+              position="Associate Software Engineer"
+              body="Initially worked on their mobile SDK for Android and iOS. Later on, joined their Big Data team where
+                    I helped the effort to transition to transfer data with Kafka, persist data in Hadoop, and process data
+                    using Spark. Did some UI work as necessary throughout my time there as well."
               startDate="June 2014"
               endDate="April 2016"
               image="img/portfolio/cj.png"/>
           </div>
           <div className="col-sm-4 portfolio-item">
             <PortfolioItem
-              title="Cal Poly San Luis Obispo"
-              body="I went to university here"
+              company="Cal Poly San Luis Obispo"
+              position="Undergraduate Student"
+              body="Graduated with a degree in Computer Science with a focus in databases and artificial intelligence."
               startDate="September 2010"
               endDate="June 2014"
               image="img/portfolio/calpoly.png"
+            />
+          </div>
+          <div className="col-sm-4 portfolio-item">
+            <PortfolioItem
+              company="Amgen"
+              position="Information Systems Intern"
+              body="Worked with a team developing a website overlay for their IT service management software.
+                    Helped author the specification document. Wrote and ran test scripts. Worked on integrating Webtrends Analytics.
+                    Also developed a SharePoint website for our department."
+              startDate="June 2013"
+              endDate="September 2013"
+              image="img/portfolio/amgen.png"
             />
           </div>
         </div>
