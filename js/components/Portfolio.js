@@ -17,7 +17,7 @@ const PortfolioItem = React.createClass({
   },
   render() {
     return <a style={{cursor: "pointer"}} onClick={this.open}>
-      <img src={this.props.image} style={{maxWidth: "360px", maxHeight: "260px"}}
+      <img src={this.props.image} style={{maxWidth: "100%", maxHeight: "260px"}}
            className="img-responsive img-centered" alt=""/>
       <Modal show={this.state.showModal} onHide={this.close}>
         <Modal.Header closeButton>
@@ -38,7 +38,7 @@ const PortfolioItem = React.createClass({
 
 const Portfolio = React.createClass({
   render() {
-    return <section id="portfolio">
+    return <section id="portfolio" style={{marginBottom: 0, paddingBottom: 0}}>
       <div className="container">
         <div className="row">
           <div className="col-lg-12 text-center">
