@@ -29,17 +29,14 @@ var config = {
       {
         test: /\.less$/,
         include: LESS_DIR,
+        exclude: /node_modules/,
         loader: 'style-loader!css-loader!less-loader'
       },
       {
         test: /\.css$/,
         include: CSS_DIR,
+        exclude: /node_modules/,
         loader: 'style-loader!css-loader'
-      },
-      {
-        test: /\.(png|jpg)$/,
-        include: IMG_DIR,
-        loader: 'url-loader?limit=8192'
       }
     ]
   }
