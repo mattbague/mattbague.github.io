@@ -40,7 +40,7 @@ const Footer = React.createClass({
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
-                Thanks for visiting!
+                Thanks for checking me out!
               </div>
             </div>
           </div>
