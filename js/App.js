@@ -17,7 +17,7 @@ const App = React.createClass({
       <Portfolio/>
       <Skills/>
       <About/>
-      <Contact/>
+      {/*<Contact/>*/}
       <Footer/>
     </div>;
   }
