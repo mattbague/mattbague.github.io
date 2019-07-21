@@ -18,10 +18,7 @@ const Footer = React.createClass({
                 <ul className="list-inline">
                   <li>
                     <a target="_blank" href="//github.com/mattbague" className="btn-social btn-outline"><i className="fa fa-fw fa-github-alt"/></a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="//twitter.com/matt_bagel" className="btn-social btn-outline"><i className="fa fa-fw fa-twitter"/></a>
-                  </li>
+                  </li>                 
                   <li>
                     <a target="_blank" href="//www.linkedin.com/in/matthewbague" className="btn-social btn-outline"><i className="fa fa-fw fa-linkedin"/></a>
                   </li>
