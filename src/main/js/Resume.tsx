@@ -1,5 +1,5 @@
 import * as React from "react";
-import {GitHub, Globe, Linkedin, Mail} from "react-feather";
+import {Download, GitHub, Globe, Linkedin, Mail} from "react-feather";
 
 export default class Resume extends React.Component<{}, {}> {
 
@@ -9,6 +9,11 @@ export default class Resume extends React.Component<{}, {}> {
       height: "11in",
     }
     return <div>
+      <div className="text-center mb-2">
+        <a href="/matt_bague_resume.pdf" className="text-blue-600 hover:text-blue-400 flex items-center justify-center" download>
+          <Download className="inline-block" size="1rem"/><span className="ml-1">Download as PDF</span>
+        </a>
+      </div>
       <div style={style} className="mx-auto border-solid border border-gray-600">
         <div style={{margin: ".5in"}}>
           <div className="flex items-center">
