@@ -1,0 +1,14 @@
+/*noinspection CssUnknownTarget*/
+@import "tailwindcss/base";
+
+/*noinspection CssUnknownTarget*/
+@import "tailwindcss/components";
+
+/*noinspection CssUnknownTarget*/
+@import "tailwindcss/utilities";
+
+
+html, body, #primordial {
+    min-height: 100%;
+    height: 100%;
+}

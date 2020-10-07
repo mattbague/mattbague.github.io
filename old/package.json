@@ -1,0 +1,28 @@
+{
+  "name": "mattbague.com",
+  "title": "mattbague.com",
+  "version": "1.0.0",
+  "author": "Matt Bague",
+  "devDependencies": {
+    "babel-core": "^6.13.2",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-react": "^6.11.1",
+    "bootstrap": "^3.3.7",
+    "css-loader": "^0.23.1",
+    "font-awesome": "^4.6.3",
+    "jquery": "^1.11.3",
+    "path": "^0.12.7",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1"
+  },
+  "dependencies": {
+    "react": "^15.3.0 ",
+    "react-dom": "^15.3.0",
+    "react-bootstrap": "^0.30.2"
+  },
+  "scripts": {
+    "dev": "../node_modules/.bin/webpack-dev-server --hot",
+    "build": "NODE_ENV='production' webpack -p --config webpack.config.prod.js"
+  }
+}
