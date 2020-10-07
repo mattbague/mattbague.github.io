@@ -10,7 +10,7 @@ export default class Resume extends React.Component<{}, {}> {
     }
     return <div>
       <div className="text-center mb-2">
-        <a href="/matt_bague_resume.pdf" className="text-blue-600 hover:text-blue-400 flex items-center justify-center" download>
+        <a href={"/matt_bague_resume.pdf"} className="text-blue-600 hover:text-blue-400 flex items-center justify-center" download>
           <Download className="inline-block" size="1rem"/><span className="ml-1">Download as PDF</span>
         </a>
       </div>
@@ -95,8 +95,8 @@ export default class Resume extends React.Component<{}, {}> {
                         of publisher sites and track performance.
                       </li>
                       <li>
-                        Worked in all areas of the codebase: web app UI,realtime-bidding logic and servers, tracking servers,reporting/campaign
-                        management API severs, realtime/historical data processing, and build/deployment tooling.
+                        Worked in all areas of the codebase: web app UI, realtime-bidding for ad inventory, tracking servers, reporting/campaign
+                        management API, realtime/historical data processing, and build/deployment tooling.
                       </li>
                     </ul>
                   }
@@ -110,8 +110,7 @@ export default class Resume extends React.Component<{}, {}> {
                     <ul className="list-disc pl-6">
                       <li>
                         Data warehouse: Migrated existing lambda architecture from Flink and Hadoop to Kafka and Spark respectively. Reduced
-                        historical
-                        job run times by 50% and our realtime data throughput significantly.
+                        historical job run times by 50% and our realtime data throughput significantly.
                       </li>
                       <li>
                         DevOps: Developed a new automated deployment system which relied on ansible playbooks and ran via a Scala app.Reduced
