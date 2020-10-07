@@ -1,20 +1,33 @@
 import * as React from "react";
 import {Download, GitHub, Globe, Linkedin, Mail} from "react-feather";
+import {Link} from "react-router-dom";
 
-export default class Resume extends React.Component<{}, {}> {
+export default class Resume extends React.PureComponent<{ standaloneView?: boolean }> {
 
   render() {
     const style = {
       width: "8.5in",
       height: "11in",
     }
+
+    let borderClass, downloadLink;
+    if (!this.props.standaloneView) {
+      borderClass = "border-solid border border-gray-600";
+      downloadLink = <div className="flex justify-center mb-2 ">
+        <div className="inline-block">
+          <a href={"/matt_bague_resume.pdf"} className="text-blue-600 hover:text-blue-400" download>
+            <div className="flex items-center">
+              <Download className="inline-block" size="1rem"/><span className="ml-1">Download as PDF</span>
+            </div>
+          </a></div>
+        <div className="inline-block mx-2 text-gray-600">|</div>
+        <div className="inline-block"><Link to="/resume" className="text-blue-600 hover:text-blue-400">View standalone</Link></div>
+      </div>;
+    }
+
     return <div>
-      <div className="text-center mb-2">
-        <a href={"/matt_bague_resume.pdf"} className="text-blue-600 hover:text-blue-400 flex items-center justify-center" download>
-          <Download className="inline-block" size="1rem"/><span className="ml-1">Download as PDF</span>
-        </a>
-      </div>
-      <div style={style} className="mx-auto border-solid border border-gray-600">
+      {downloadLink}
+      <div style={style} className={`mx-auto ${borderClass}`}>
         <div style={{margin: ".5in"}}>
           <div className="flex items-center">
             <div className="font-bold" style={{width: "40%", fontSize: "3rem"}}>
@@ -124,11 +137,11 @@ export default class Resume extends React.Component<{}, {}> {
               <Section title={"Projects"}>
                 <SectionEntry
                   title="CloudBurst"
-                  subtitle="SoundCloud Downloader"
+                  subtitle={<a href="https://github.com/mattbague/CloudBurst" target="_blank">github.com/mattbague/CloudBurst</a>}
                   description={
                     <p>
-                      A CLI downloader built in Scala. Downloads songs with their ID3 tag populated and album art. Reverse engineered their public API
-                      since they do not give out personal API keys anymore.
+                      A downloader tool for <a href="https://soundcloud.com" target="_blank">soundcloud.com</a> built in Scala. Downloads songs with
+                      ID3 tag filled in and album artwork. Reverse engineered their public API since they do not give out personal API keys anymore.
                     </p>
                   }/>
                 <SectionEntry
