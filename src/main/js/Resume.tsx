@@ -8,9 +8,10 @@ export default class Resume extends React.PureComponent<{ standaloneView?: boole
     const style = {
       width: "8.5in",
       height: "11in",
+      padding: ".5in"
     }
 
-    let borderClass, downloadLink;
+    let borderClass = "", downloadLink;
     if (!this.props.standaloneView) {
       borderClass = "border-solid border border-gray-600";
       downloadLink = <div className="flex justify-center mb-2 ">
@@ -28,7 +29,7 @@ export default class Resume extends React.PureComponent<{ standaloneView?: boole
     return <div>
       {downloadLink}
       <div style={style} className={`mx-auto ${borderClass}`}>
-        <div style={{margin: ".5in"}}>
+        <div>
           <div className="flex items-center">
             <div className="font-bold" style={{width: "40%", fontSize: "3rem"}}>
               Matt Bague
@@ -122,13 +123,13 @@ export default class Resume extends React.PureComponent<{ standaloneView?: boole
                   description={
                     <ul className="list-disc pl-6">
                       <li>
-                        Data warehouse: Migrated existing lambda architecture from Flink and Hadoop to Kafka and Spark respectively. Reduced
+                        Data warehouse: Migrated existing lambda architecture from Flink and Hadoop to Kafka and Spark respectively. Decreased
                         historical job run times by 50% and our realtime data throughput significantly.
                       </li>
                       <li>
-                        DevOps: Developed a new automated deployment system which relied on ansible playbooks and ran via a Scala app.Reduced
-                        deployment from 1-2 hours (after-hours) to 15 minutes (during work day) and did not require anyone with special knowledge to
-                        be able to deploy our apps.
+                        DevOps: Developed a new automated deployment system which relied on ansible playbooks and ran via a Scala app. Reduced
+                        deployment from 1-2 hours (after work) to 15 minutes (during work). No longer required anyone with special knowledge to
+                        be able to deploy our apps. Ease of use allowed us to deploy multiple times a week instead of just once.
                       </li>
                     </ul>
                   }

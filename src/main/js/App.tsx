@@ -1,7 +1,7 @@
 import React from 'react';
 import 'App.css';
 import Resume from "Resume";
-import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
+import {HashRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
 
 export default class App extends React.Component<any, any> {
 
