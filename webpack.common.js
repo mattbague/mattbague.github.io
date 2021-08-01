@@ -2,11 +2,12 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPl
 const path = require("path");
 const glob = require("glob");
 const PurgecssPlugin = require("purgecss-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: path.resolve(__dirname, "src/main/js/index.tsx"),
   output: {
-    filename: "bundle.js",
+    filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "dist"),
     publicPath: "/"
   },
@@ -26,7 +27,7 @@ module.exports = {
   },
   optimization: {
     splitChunks: {
-      // chunks: "all",
+      chunks: "async",
       cacheGroups: {
         styles: {
           name: "styles",
@@ -51,6 +52,11 @@ module.exports = {
     // }),
     new PurgecssPlugin({
       paths: glob.sync(`src/**/*`, {nodir: true}),
+    }),
+    new HtmlWebpackPlugin({
+      title: "mattbague",
+      template: path.resolve(__dirname, "src/main/html/index.html"),
+      cache: false
     })
   ],
   module: {
@@ -101,35 +107,29 @@ module.exports = {
         test: /\.css$/,
         use: [
           "style-loader",
-          { loader: "css-loader", options: { importLoaders: 1 } },
+          {loader: "css-loader", options: {importLoaders: 1}},
           {
             loader: "postcss-loader",
             options: {
-              ident: "postcss",
-              plugins: [
-                require("tailwindcss")("./tailwind.config.js"),
-                require("autoprefixer"),
-              ],
+              postcssOptions: {
+                ident: "postcss",
+                plugins: [
+                  require("tailwindcss")("./tailwind.config.js"),
+                  require("autoprefixer"),
+                ]
+              }
             },
           }
         ],
       },
       {
-        test: /.*\.(gif|png|jpe?g)$/i,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "img/[name].[ext]",
-            }
-          },
-          {
-            loader: "image-webpack-loader"
-          }
-        ]
+        test: /\.(png|jpg|gif)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: '[hash][ext][query]'
+        }
       }
     ]
   },
-  externals: {
-  }
+  externals: {}
 };
