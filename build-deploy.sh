@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-rm ./dist/*
+rm -rf ./dist/*
 
 npm run build:prod
 
 rm ./docs/*.js ./docs/index.html ./docs/*.png ./docs/*.txt
 
-cp ./dist/* ./docs/
+cp -r ./dist/* ./docs/

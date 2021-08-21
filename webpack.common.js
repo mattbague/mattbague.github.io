@@ -3,6 +3,7 @@ const path = require("path");
 const glob = require("glob");
 const PurgecssPlugin = require("purgecss-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, "src/main/js/index.tsx"),
@@ -29,17 +30,10 @@ module.exports = {
     splitChunks: {
       chunks: "async",
       cacheGroups: {
-        styles: {
-          name: "styles",
-          test: /\.css$/,
-          chunks: "all",
-          enforce: true
-        },
         vendor: {
           test: /[\\/]node_modules[\\/]/,
           name: "vendor",
           chunks: "initial",
-          priority: 10,
           enforce: true
         }
       }
@@ -47,9 +41,6 @@ module.exports = {
   },
   plugins: [
     // new BundleAnalyzerPlugin(),
-    // new MiniCssExtractPlugin({
-    //   filename: "styles.css",
-    // }),
     new PurgecssPlugin({
       paths: glob.sync(`src/**/*`, {nodir: true}),
     }),
@@ -57,22 +48,19 @@ module.exports = {
       title: "mattbague",
       template: path.resolve(__dirname, "src/main/html/index.html"),
       cache: false
-    })
+    }),
+    new FaviconsWebpackPlugin("src/main/img/icon.png"),
   ],
   module: {
     rules: [
       {
-        test: /\.(ts|js)x?$/,
+        test: /\.tsx?$/i,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: "babel-loader",
-            options: {
-              presets: ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"],
-              plugins: ["@babel/plugin-proposal-object-rest-spread", "@babel/plugin-proposal-class-properties"]
-            }
-          }
-        ]
+        loader: 'esbuild-loader',
+        options: {
+          loader: 'tsx',
+          target: 'es2018'
+        }
       },
       {
         enforce: "pre",
