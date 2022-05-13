@@ -1,7 +1,10 @@
 import React from "react";
 import {GitHub, Linkedin, Mail} from "react-feather";
+import useDocumentTitle from "UseDocumentTitle";
 
 export default function Contact() {
+  useDocumentTitle("Contact");
+
   return <div className="flex flex-col gap-2">
     <IconLink icon={<GitHub className="inline-block"/>} url={"https://github.com/mattbague"} label={"GitHub"}/>
     <IconLink icon={<Linkedin className="inline-block"/>} url={"https://www.linkedin.com/in/matthewbague/"} label={"LinkedIn"}/>

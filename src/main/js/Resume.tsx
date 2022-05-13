@@ -1,5 +1,6 @@
 import * as React from "react";
 import {Download, GitHub, Globe, Linkedin, Mail} from "react-feather";
+import useDocumentTitle from "UseDocumentTitle";
 
 const style = {
   width: "8.5in",
@@ -8,6 +9,8 @@ const style = {
 }
 
 export default function Resume() {
+  useDocumentTitle("Resume");
+
   const borderClass = "border-solid border border-gray-600 bg-white";
   const downloadLink = <div style={{width: style.width}} className="mx-auto flex justify-end mb-1">
       <a href={"/matt_bague_resume.pdf"} className="text-blue-500 hover:text-blue-400" download>

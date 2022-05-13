@@ -1,9 +1,9 @@
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const path = require("path");
-const glob = require("glob");
-const PurgecssPlugin = require("purgecss-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: path.resolve(__dirname, "src/main/js/index.tsx"),
@@ -17,6 +17,7 @@ module.exports = {
     modules: [
       path.resolve(__dirname, "src/main/js"),
       path.resolve(__dirname, "src/main/style"),
+      path.resolve(__dirname, "src/main/img"),
       "node_modules"
     ],
     extensions: [".ts", ".tsx", ".js", ".css", ".less"]
@@ -28,21 +29,18 @@ module.exports = {
   },
   optimization: {
     splitChunks: {
-      chunks: "async",
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: "vendor",
-          chunks: "initial",
-          enforce: true
-        }
-      }
-    }
+      chunks: "all"
+    },
+    minimizer: [
+      // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
+      `...`,
+      new CssMinimizerPlugin()
+    ]
   },
   plugins: [
     // new BundleAnalyzerPlugin(),
-    new PurgecssPlugin({
-      paths: glob.sync(`src/**/*`, {nodir: true}),
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css"
     }),
     new HtmlWebpackPlugin({
       title: "mattbague",
@@ -82,33 +80,23 @@ module.exports = {
         ]
       },
       {
-        test: /\.scss$/,
-        use: [{
-          loader: "style-loader" // creates style nodes from JS strings
-        }, {
-          loader: "css-loader" // translates CSS into CommonJS
-        }, {
-          loader: "sass-loader" // compiles Sass to CSS
-        }]
-      },
-      {
-        test: /\.css$/,
+        test: /\.(sa|sc|c)ss$/i,
         use: [
-          "style-loader",
-          {loader: "css-loader", options: {importLoaders: 1}},
+          MiniCssExtractPlugin.loader,
+          {loader: "css-loader", options: {importLoaders: 2}},
           {
             loader: "postcss-loader",
             options: {
               postcssOptions: {
-                ident: "postcss",
                 plugins: [
                   require("tailwindcss")("./tailwind.config.js"),
-                  require("autoprefixer"),
+                  require("postcss-preset-env")
                 ]
               }
-            },
-          }
-        ],
+            }
+          },
+          {loader: "sass-loader"}
+        ]
       },
       {
         test: /\.(png|jpg|gif)$/i,

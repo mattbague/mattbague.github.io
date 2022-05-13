@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import 'App.css';
-import {HashRouter as Router, Redirect, Switch, useLocation} from 'react-router-dom';
+import {HashRouter as Router, Navigate, Route, Routes, useLocation} from 'react-router-dom';
 import Navigation, {routes} from "./Navigation";
 
 export default function App() {
@@ -8,13 +8,18 @@ export default function App() {
     <ScrollToTop/>
     <div className="p-2">
       <Navigation/>
-      <Switch>
-        {routes}
-        <Redirect to="/"/>
-      </Switch>
+      <Routes>
+      {routes}
+        <Route path={"/not-found"} element={PageNotFound}/>
+        <Route path="/*" element={<Navigate to="/not-found"/>}/>
+      </Routes>
     </div>
   </Router>;
 }
+
+const PageNotFound = <div>
+  Not Found
+</div>
 
 function ScrollToTop() {
   const {pathname} = useLocation();

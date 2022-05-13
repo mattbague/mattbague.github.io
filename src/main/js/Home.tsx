@@ -1,11 +1,13 @@
 import React from "react";
-import Me from "../img/me.png";
+import Me from "me.png";
+import useDocumentTitle from "UseDocumentTitle";
 
-export function HomeView() {
+export default function Home() {
+  useDocumentTitle("Home");
 
-  const cellClass = "px-2 py-1"
+  const cellClass = "px-2 py-1";
 
-  return <div className="text-lg w-2/5 mx-auto flex flex-col gap-6">
+  return <div className="text-lg md:w-2/5 w-full mx-auto flex flex-col gap-6">
     <img src={Me} className="mx-auto" alt="Me"/>
     <code>
       <table className="mx-auto border-double border-4 border-gray-400">
@@ -20,10 +22,18 @@ export function HomeView() {
         </tr>
         <tr>
           <td className={cellClass}>
-            Profession:
+            Job:
           </td>
           <td className={cellClass}>
-            Software Engineer
+            Sr. Software Engineer
+          </td>
+        </tr>
+        <tr>
+          <td className={cellClass}>
+            Type:
+          </td>
+          <td className={cellClass}>
+            Full Stack
           </td>
         </tr>
         <tr>
@@ -36,7 +46,7 @@ export function HomeView() {
         </tr>
         <tr>
           <td className={cellClass}>
-            Likes:
+            Languages:
           </td>
           <td className={cellClass}>
             Scala, TypeScript, SQL
@@ -44,14 +54,21 @@ export function HomeView() {
         </tr>
         <tr>
           <td className={cellClass}>
-            Dislikes:
+            Employer:
           </td>
           <td className={cellClass}>
-            Long Meetings
+            <a href="https://storygize.com" target="_blank" className="text-blue-400 hover:underline">Storygize</a>
           </td>
         </tr>
         </tbody>
       </table>
     </code>
+
+    {/*<div className="text-center">*/}
+    {/*  <div className="font-medium">Current Projects:</div>*/}
+    {/*  <ul>*/}
+    {/*    <li></li>*/}
+    {/*  </ul>*/}
+    {/*</div>*/}
   </div>;
 }
