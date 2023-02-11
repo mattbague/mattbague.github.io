@@ -29,7 +29,7 @@
     "html-webpack-plugin": "5.5.0",
     "less-loader": "10.2.0",
     "mini-css-extract-plugin": "2.6.0",
-    "npm-check-updates": "12.5.11",
+    "npm-check-updates": "16.7.4",
     "postcss-loader": "6.2.1",
     "postcss-preset-env": "7.5.0",
     "sass": "1.51.0",
