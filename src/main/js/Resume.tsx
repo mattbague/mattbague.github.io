@@ -84,7 +84,7 @@ export default function Resume() {
             </Section>
             <Section title={"About Me"}>
               <p>
-                I've been a full stack engineer since I graduated college back in 2014. Love being able to design and develop a system from the
+                I've been a full-stack engineer since I graduated college back in 2014. Love being able to design and develop a system from the
                 ground up. Always up for learning something new, whether it's new tech or design patterns.
               </p>
             </Section>
@@ -93,7 +93,7 @@ export default function Resume() {
             <Section title={"Experience"}>
               <SectionEntry
                 title="Storygize (Native Advertising)"
-                subtitle="Fullstack Software Engineer"
+                subtitle="Principal Software Engineer"
                 date={"Apr 2016 \u2013 present"}
                 location="Newbury Park, CA"
                 description={

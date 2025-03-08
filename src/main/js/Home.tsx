@@ -25,7 +25,7 @@ export default function Home() {
             Job:
           </td>
           <td className={cellClass}>
-            Sr. Software Engineer
+            Principal Software Engineer
           </td>
         </tr>
         <tr>
@@ -33,7 +33,7 @@ export default function Home() {
             Type:
           </td>
           <td className={cellClass}>
-            Full Stack
+            Full-Stack
           </td>
         </tr>
         <tr>
